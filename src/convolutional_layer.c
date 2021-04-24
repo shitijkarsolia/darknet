@@ -284,7 +284,7 @@ void cudnn_convolutional_setup(layer *l, int cudnn_preference, size_t workspace_
     CHECK_CUDNN(cudnnSetConvolution2dDescriptor(l->convDesc, l->pad * l->dilation, l->pad * l->dilation, l->stride_y, l->stride_x, l->dilation, l->dilation, CUDNN_CROSS_CORRELATION));    // cudnn 5.1
 #endif
     int forward_algo = CUDNN_CONVOLUTION_BWD_FILTER_ALGO_3;
-    int backward_algo = CUDNN_CONVOLUTION_BWD_DATA_PREFER_FASTEST;
+    int backward_algo = CUDNN_CONVOLUTION_BWD_DATA_ALGO_FFT;
     int backward_filter = CUDNN_CONVOLUTION_BWD_FILTER_PREFER_FASTEST;
     if (cudnn_preference == cudnn_smallest)
     {
